@@ -12,8 +12,8 @@
 | lora_r                | 8                                                       | 8                                                       | 8                           |
 | lora_alpha            | 16                                                      | 16                                                      | 16                          |
 | target_modules        | q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj | q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj | q_proj,k_proj,v_proj,o_proj |
-| trainable_params      | 0                                                       | 0                                                       | 0                           |
-| trainable_pct         | 0.0                                                     | 0.0                                                     | 0.0                         |
+| trainable_params      | 1898496                                                 | 1898496                                                 | 737280                      |
+| trainable_pct         | 0.7032                                                  | 0.7032                                                  | 0.2742                      |
 | train_examples        | 2160                                                    | 2160                                                    | 2160                        |
 | eval_examples         | 240                                                     | 240                                                     | 240                         |
 | optimizer_steps       | 405                                                     | 270                                                     | 270                         |

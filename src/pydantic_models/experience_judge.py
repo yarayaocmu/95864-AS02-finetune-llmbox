@@ -87,9 +87,21 @@ def likert_from_labels(judge_label: str, response_text: str) -> tuple[int, Optio
 # evaluated (Gemma), to reduce self-preference bias.
 # ----------------------------------------------------------------------------
 _JUDGE = {"model": None, "tok": None, "device": None}
-JUDGE_MODEL_PATH = os.environ.get(
-    "AS02_JUDGE_MODEL",
-    str(Path(__file__).resolve().parents[5] / "labs" / "lab01" / "models" / "phi4-mini-instruct"))
+def _default_judge_path() -> str:
+    """AS02_JUDGE_MODEL env var, else the lab01 checkout on the laptop, else models/llms/microsoft/... in llmbox."""
+    if os.environ.get("AS02_JUDGE_MODEL"):
+        return os.environ["AS02_JUDGE_MODEL"]
+    here = Path(__file__).resolve()
+    candidates = [here.parents[2] / "models" / "llms" / "microsoft" / "phi4-mini-instruct"]
+    if len(here.parents) > 5:
+        candidates.append(here.parents[5] / "labs" / "lab01" / "models" / "phi4-mini-instruct")
+    for c in candidates:
+        if c.is_dir():
+            return str(c)
+    return str(candidates[0])
+
+
+JUDGE_MODEL_PATH = _default_judge_path()
 
 
 def _load_judge():

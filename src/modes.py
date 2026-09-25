@@ -629,6 +629,8 @@ class Modes:
             trainer.add_callback(_MpsEmptyCache())
         self.log.info("Starting %s (method=%s, optimizer=%s)...", cfg.mode.name, cfg.training.method, cfg.optimizer.name)
 
+        _n_trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)   # AS02 edit: count before
+        _n_total = sum(p.numel() for p in model.parameters())                          #   merge_and_unload()
         metrics_tracker = training_metrics.MetricsTracker(cfg)  # sk edited: sept. 20 2026 around 10:10 AM EST
         if cfg.training.report_metrics:                         # sk edited: sept. 20 2026 around 10:10 AM EST
             metrics_tracker.start()                             # sk edited: sept. 20 2026 around 10:10 AM EST
@@ -661,8 +663,7 @@ class Modes:
                 json.dumps(trainer.state.log_history, indent=2), encoding="utf-8")
             (model_metrics_dir / f"{stem}_config.yaml").write_text(OmegaConf.to_yaml(cfg), encoding="utf-8")
             curve = training_metrics.plot_loss_curve(trainer, str(model_metrics_dir / f"{stem}_loss_curve.png"))
-            trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
-            total = sum(p.numel() for p in model.parameters())
+            trainable, total = _n_trainable, _n_total
             extra = {"run_name": run_name, "trainable_params": trainable, "total_params": total,
                      "trainable_pct": round(100 * trainable / total, 4), "global_steps": trainer.state.global_step,
                      "train_examples": len(train_dataset), "eval_examples": len(eval_dataset) if eval_dataset else 0,

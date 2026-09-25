@@ -1,0 +1,57 @@
+{
+  "evalset": "data/as02/part_d/evalset_exp2_test.jsonl",
+  "n": 100,
+  "criteria": "The response is exactly one of POSITIVE / NEUTRAL / NEGATIVE and matches the experience a clinician would read from the report.",
+  "judge_likert_distribution": {
+    "2": 2,
+    "3": 42,
+    "5": 56
+  },
+  "gold_rubric_likert_distribution": {
+    "3": 38,
+    "5": 62
+  },
+  "judge_class_agreement_with_gold": 0.57,
+  "judge_vs_gold_rubric_percent_agreement": 0.63,
+  "judge_vs_gold_rubric_cohen_kappa": 0.25,
+  "mean_judge_likert": 4.1,
+  "share_rated_5": 0.56,
+  "judge_class_agreement_with_model_pred": 0.56,
+  "three_way_agreement_gold_model_judge": 0.41,
+  "judge_vs_gold_confusion": {
+    "POSITIVE": {
+      "POSITIVE": 23,
+      "NEUTRAL": 2,
+      "NEGATIVE": 7
+    },
+    "NEUTRAL": {
+      "POSITIVE": 5,
+      "NEUTRAL": 4,
+      "NEGATIVE": 27
+    },
+    "NEGATIVE": {
+      "POSITIVE": 0,
+      "NEUTRAL": 2,
+      "NEGATIVE": 30
+    }
+  },
+  "judge_vs_model_confusion": {
+    "POSITIVE": {
+      "POSITIVE": 20,
+      "NEUTRAL": 0,
+      "NEGATIVE": 2
+    },
+    "NEUTRAL": {
+      "POSITIVE": 8,
+      "NEUTRAL": 8,
+      "NEGATIVE": 34
+    },
+    "NEGATIVE": {
+      "POSITIVE": 0,
+      "NEUTRAL": 0,
+      "NEGATIVE": 28
+    }
+  },
+  "judge_model": "microsoft/Phi-4-mini-instruct (local, blind two-stage)",
+  "run_on": "laptop MPS, 2026-09-25"
+}
