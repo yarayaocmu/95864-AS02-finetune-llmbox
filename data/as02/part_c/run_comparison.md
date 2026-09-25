@@ -1,0 +1,39 @@
+|                       | 0                                                       | 1                                                       | 2                           |
+|:----------------------|:--------------------------------------------------------|:--------------------------------------------------------|:----------------------------|
+| run                   | exp1_baseline                                           | exp2_updated                                            | exp3_attention_only         |
+| method                | lora                                                    | lora                                                    | lora                        |
+| epochs                | 3.0                                                     | 2.0                                                     | 2.0                         |
+| batch_size            | 2                                                       | 8                                                       | 8                           |
+| grad_accum            | 8                                                       | 2                                                       | 2                           |
+| effective_batch       | 16                                                      | 16                                                      | 16                          |
+| lr                    | 2e-05                                                   | 0.0002                                                  | 0.0002                      |
+| warmup_ratio          | 0.03                                                    | 0.03                                                    | 0.03                        |
+| max_length            | 512                                                     | 512                                                     | 512                         |
+| lora_r                | 8                                                       | 8                                                       | 8                           |
+| lora_alpha            | 16                                                      | 16                                                      | 16                          |
+| target_modules        | q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj | q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj | q_proj,k_proj,v_proj,o_proj |
+| trainable_params      | 0                                                       | 0                                                       | 0                           |
+| trainable_pct         | 0.0                                                     | 0.0                                                     | 0.0                         |
+| train_examples        | 2160                                                    | 2160                                                    | 2160                        |
+| eval_examples         | 240                                                     | 240                                                     | 240                         |
+| optimizer_steps       | 405                                                     | 270                                                     | 270                         |
+| elapsed_s             | 769.9                                                   | 140.2                                                   | 109.9                       |
+| elapsed_min           | 12.8                                                    | 2.3                                                     | 1.8                         |
+| sec_per_step          | 1.9                                                     | 0.52                                                    | 0.41                        |
+| peak_mem_GB           | 2.3                                                     | 2.29                                                    | 2.56                        |
+| mem_pct               | 2.8                                                     | 2.7                                                     | 3.1                         |
+| avg_cpu_pct           | 10.1                                                    | 10.1                                                    | 10.3                        |
+| tokens_processed      | 1392824                                                 | 1113904                                                 | 1113904                     |
+| tokens_source         | reported by Trainer                                     | reported by Trainer                                     | reported by Trainer         |
+| token_budget_used_pct | 139.28                                                  | 111.39                                                  | 111.39                      |
+| flops                 | 2240481443334144.0                                      | 1791813783834624.0                                      | 1791813783834624.0          |
+| flops_level           | 2                                                       | 2                                                       | 2                           |
+| energy_kWh            | 0.027586768973646713                                    | 0.007544469122624254                                    | 0.006346214292778695        |
+| carbon_kg             | 0.011034707589458686                                    | 0.003017787649049702                                    | 0.002538485717111478        |
+| first_train_loss      | 2.967642402648926                                       | 2.4760833740234376                                      | 2.68328742980957            |
+| final_train_loss      | 0.18777843713760375                                     | 0.1925721287727356                                      | 0.21159892082214354         |
+| final_perplexity      | 1.2065661554811113                                      | 1.212363946877419                                       | 1.235652191313916           |
+| final_eval_loss       | 0.2257280945777893                                      | 0.20704412460327148                                     | 0.220027357339859           |
+| final_eval_perplexity | 1.2532348575934749                                      | 1.2300368454711572                                      | 1.2461108203982911          |
+| best_eval_loss        | 0.21867895126342773                                     | 0.19972161948680878                                     | 0.21113739907741547         |
+| n_eval_points         | 17                                                      | 11                                                      | 11                          |

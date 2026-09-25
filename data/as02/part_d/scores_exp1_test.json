@@ -1,0 +1,59 @@
+{
+  "tag": "exp1_test",
+  "model": "finetuned_exp1_baseline/merged",
+  "adapter": null,
+  "data": "data/as02/splits/test.jsonl",
+  "n": 100,
+  "seconds": 9.0,
+  "sec_per_prompt": 0.09,
+  "format_compliance_exact_label_only": 1.0,
+  "parseable_label_anywhere": 1.0,
+  "accuracy": 0.53,
+  "macro_f1": 0.543,
+  "negative_recall": 0.594,
+  "majority_class_baseline_accuracy": 0.36,
+  "per_class": {
+    "POSITIVE": {
+      "support": 32,
+      "precision": 0.75,
+      "recall": 0.562,
+      "f1": 0.643
+    },
+    "NEUTRAL": {
+      "support": 36,
+      "precision": 0.381,
+      "recall": 0.444,
+      "f1": 0.41
+    },
+    "NEGATIVE": {
+      "support": 32,
+      "precision": 0.559,
+      "recall": 0.594,
+      "f1": 0.576
+    }
+  },
+  "confusion(gold->pred)": {
+    "POSITIVE": {
+      "POSITIVE": 18,
+      "NEUTRAL": 13,
+      "NEGATIVE": 1,
+      "NONE": 0
+    },
+    "NEUTRAL": {
+      "POSITIVE": 6,
+      "NEUTRAL": 16,
+      "NEGATIVE": 14,
+      "NONE": 0
+    },
+    "NEGATIVE": {
+      "POSITIVE": 0,
+      "NEUTRAL": 13,
+      "NEGATIVE": 19,
+      "NONE": 0
+    }
+  },
+  "accuracy_chronic_subgroup": 0.519,
+  "accuracy_non_chronic": 0.534,
+  "off_by_two_errors (POSITIVE<->NEGATIVE)": 1,
+  "example_non_compliant_outputs": []
+}

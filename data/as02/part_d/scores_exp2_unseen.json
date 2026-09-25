@@ -1,0 +1,59 @@
+{
+  "tag": "exp2_unseen",
+  "model": "finetuned_exp2_updated/merged",
+  "adapter": null,
+  "data": "data/as02/eval/unseen_drugs_eval.jsonl",
+  "n": 100,
+  "seconds": 9.2,
+  "sec_per_prompt": 0.09,
+  "format_compliance_exact_label_only": 1.0,
+  "parseable_label_anywhere": 1.0,
+  "accuracy": 0.66,
+  "macro_f1": 0.652,
+  "negative_recall": 0.5,
+  "majority_class_baseline_accuracy": 0.37,
+  "per_class": {
+    "POSITIVE": {
+      "support": 37,
+      "precision": 0.844,
+      "recall": 0.73,
+      "f1": 0.783
+    },
+    "NEUTRAL": {
+      "support": 35,
+      "precision": 0.556,
+      "recall": 0.714,
+      "f1": 0.625
+    },
+    "NEGATIVE": {
+      "support": 28,
+      "precision": 0.609,
+      "recall": 0.5,
+      "f1": 0.549
+    }
+  },
+  "confusion(gold->pred)": {
+    "POSITIVE": {
+      "POSITIVE": 27,
+      "NEUTRAL": 8,
+      "NEGATIVE": 2,
+      "NONE": 0
+    },
+    "NEUTRAL": {
+      "POSITIVE": 3,
+      "NEUTRAL": 25,
+      "NEGATIVE": 7,
+      "NONE": 0
+    },
+    "NEGATIVE": {
+      "POSITIVE": 2,
+      "NEUTRAL": 12,
+      "NEGATIVE": 14,
+      "NONE": 0
+    }
+  },
+  "accuracy_chronic_subgroup": 0.692,
+  "accuracy_non_chronic": 0.649,
+  "off_by_two_errors (POSITIVE<->NEGATIVE)": 4,
+  "example_non_compliant_outputs": []
+}

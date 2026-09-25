@@ -1,0 +1,59 @@
+{
+  "tag": "base_test",
+  "model": "models/llms/google/gemma-3-270m-it",
+  "adapter": null,
+  "data": "data/as02/splits/test.jsonl",
+  "n": 100,
+  "seconds": 12.7,
+  "sec_per_prompt": 0.13,
+  "format_compliance_exact_label_only": 1.0,
+  "parseable_label_anywhere": 1.0,
+  "accuracy": 0.46,
+  "macro_f1": 0.372,
+  "negative_recall": 1.0,
+  "majority_class_baseline_accuracy": 0.36,
+  "per_class": {
+    "POSITIVE": {
+      "support": 32,
+      "precision": 0.737,
+      "recall": 0.438,
+      "f1": 0.549
+    },
+    "NEUTRAL": {
+      "support": 36,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "NEGATIVE": {
+      "support": 32,
+      "precision": 0.395,
+      "recall": 1.0,
+      "f1": 0.566
+    }
+  },
+  "confusion(gold->pred)": {
+    "POSITIVE": {
+      "POSITIVE": 14,
+      "NEUTRAL": 0,
+      "NEGATIVE": 18,
+      "NONE": 0
+    },
+    "NEUTRAL": {
+      "POSITIVE": 5,
+      "NEUTRAL": 0,
+      "NEGATIVE": 31,
+      "NONE": 0
+    },
+    "NEGATIVE": {
+      "POSITIVE": 0,
+      "NEUTRAL": 0,
+      "NEGATIVE": 32,
+      "NONE": 0
+    }
+  },
+  "accuracy_chronic_subgroup": 0.444,
+  "accuracy_non_chronic": 0.466,
+  "off_by_two_errors (POSITIVE<->NEGATIVE)": 18,
+  "example_non_compliant_outputs": []
+}

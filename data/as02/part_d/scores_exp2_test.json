@@ -1,0 +1,59 @@
+{
+  "tag": "exp2_test",
+  "model": "finetuned_exp2_updated/merged",
+  "adapter": null,
+  "data": "data/as02/splits/test.jsonl",
+  "n": 100,
+  "seconds": 9.5,
+  "sec_per_prompt": 0.1,
+  "format_compliance_exact_label_only": 1.0,
+  "parseable_label_anywhere": 1.0,
+  "accuracy": 0.62,
+  "macro_f1": 0.63,
+  "negative_recall": 0.625,
+  "majority_class_baseline_accuracy": 0.36,
+  "per_class": {
+    "POSITIVE": {
+      "support": 32,
+      "precision": 0.818,
+      "recall": 0.562,
+      "f1": 0.667
+    },
+    "NEUTRAL": {
+      "support": 36,
+      "precision": 0.48,
+      "recall": 0.667,
+      "f1": 0.558
+    },
+    "NEGATIVE": {
+      "support": 32,
+      "precision": 0.714,
+      "recall": 0.625,
+      "f1": 0.667
+    }
+  },
+  "confusion(gold->pred)": {
+    "POSITIVE": {
+      "POSITIVE": 18,
+      "NEUTRAL": 14,
+      "NEGATIVE": 0,
+      "NONE": 0
+    },
+    "NEUTRAL": {
+      "POSITIVE": 4,
+      "NEUTRAL": 24,
+      "NEGATIVE": 8,
+      "NONE": 0
+    },
+    "NEGATIVE": {
+      "POSITIVE": 0,
+      "NEUTRAL": 12,
+      "NEGATIVE": 20,
+      "NONE": 0
+    }
+  },
+  "accuracy_chronic_subgroup": 0.63,
+  "accuracy_non_chronic": 0.616,
+  "off_by_two_errors (POSITIVE<->NEGATIVE)": 0,
+  "example_non_compliant_outputs": []
+}

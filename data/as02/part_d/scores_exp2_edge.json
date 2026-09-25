@@ -1,0 +1,59 @@
+{
+  "tag": "exp2_edge",
+  "model": "finetuned_exp2_updated/merged",
+  "adapter": null,
+  "data": "data/as02/eval/edge_cases.jsonl",
+  "n": 24,
+  "seconds": 2.6,
+  "sec_per_prompt": 0.11,
+  "format_compliance_exact_label_only": 1.0,
+  "parseable_label_anywhere": 1.0,
+  "accuracy": 0.708,
+  "macro_f1": 0.711,
+  "negative_recall": 0.857,
+  "majority_class_baseline_accuracy": 0.375,
+  "per_class": {
+    "POSITIVE": {
+      "support": 8,
+      "precision": 0.714,
+      "recall": 0.625,
+      "f1": 0.667
+    },
+    "NEUTRAL": {
+      "support": 9,
+      "precision": 0.667,
+      "recall": 0.667,
+      "f1": 0.667
+    },
+    "NEGATIVE": {
+      "support": 7,
+      "precision": 0.75,
+      "recall": 0.857,
+      "f1": 0.8
+    }
+  },
+  "confusion(gold->pred)": {
+    "POSITIVE": {
+      "POSITIVE": 5,
+      "NEUTRAL": 3,
+      "NEGATIVE": 0,
+      "NONE": 0
+    },
+    "NEUTRAL": {
+      "POSITIVE": 1,
+      "NEUTRAL": 6,
+      "NEGATIVE": 2,
+      "NONE": 0
+    },
+    "NEGATIVE": {
+      "POSITIVE": 1,
+      "NEUTRAL": 0,
+      "NEGATIVE": 6,
+      "NONE": 0
+    }
+  },
+  "accuracy_chronic_subgroup": null,
+  "accuracy_non_chronic": null,
+  "off_by_two_errors (POSITIVE<->NEGATIVE)": 1,
+  "example_non_compliant_outputs": []
+}

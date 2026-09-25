@@ -1,0 +1,12 @@
+{
+  "run_name": "exp3_attention_only",
+  "trainable_params": 0,
+  "total_params": 268098176,
+  "trainable_pct": 0.0,
+  "global_steps": 270,
+  "train_examples": 2160,
+  "eval_examples": 240,
+  "device": "cuda",
+  "dtype": "torch.bfloat16",
+  "metrics_file": "data/evaluations/finetune_gemma3_270m_it_20260925_165745_metrics.json"
+}
