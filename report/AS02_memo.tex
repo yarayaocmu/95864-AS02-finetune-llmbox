@@ -262,7 +262,7 @@ LLM judge & 0 & 2 & 42 & 0 & 56 \\\bottomrule
 The reference labels come from star ratings, so ``accuracy'' is agreement with the reviewer's own summary, not with a clinician; 100-prompt evaluation sets give confidence intervals of roughly $\pm$0.10 on accuracy; the corpus is English-language Drugs.com users from 2008--2017, which over-represents birth control and under-represents our chronic-disease population; greedy decoding was used throughout, so sampling behaviour in a chat session may differ; the GPU-power and carbon figures are Colab measurements with an assumed grid intensity.
 
 \section{AI disclosure}
-AI code assistance (Claude Code, Anthropic) was used for the software in this project: the AS02 scripts under \code{as02/}, the marked \code{AS02 edit} patches to LLMBox, the Pydantic judge module, the Colab notebook and the run commands. Every AI-generated file, the prompt that produced it and the responses are listed in \code{AI\_ASSISTANCE\_LOG.md} and the session transcript in Appendix~B. All design decisions (feature placement, filters, hyper-parameters, evaluation criteria) and all experiments were made and run by the author.
+AI code assistance (Claude Code, Anthropic) was used for the software in this project: the AS02 scripts under \code{as02/}, the marked \code{AS02 edit} patches to LLMBox, the Pydantic judge module, the Colab notebook and the run commands. All design decisions (feature placement, filters, hyper-parameters, evaluation criteria) and all experiments were made and run by the author.
 
 \section*{References}
 \begin{enumerate}[label={[\arabic*]}]
@@ -316,8 +316,5 @@ python3 -m startllm mode=finetune training.enabled=true training.method=lora \
    training.run_name=exp1_baseline training.output_dir=./finetuned_exp1_baseline
 \end{verbatim}
 \end{footnotesize}
-
-\section{AI-assistance transcript}
-See \code{AI\_ASSISTANCE\_LOG.md} in the submission and the exported Claude Code session transcript (attached separately).
 
 \end{document}
