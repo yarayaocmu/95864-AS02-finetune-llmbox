@@ -1,0 +1,7 @@
+,rows
+condition_truncated_name (e.g. 'Bipolar Disorde'),160
+report_contains_html_entity,0
+report_contains_url,0
+report_non_ascii_chars,22
+report_all_caps_words(>=3),2400
+report_shorter_than_10_words,49

@@ -1,0 +1,25 @@
+{
+  "prompt": "You are a decision-support assistant for clinicians and pharmacists. Read the patient's own report about a medication and classify the reported experience as POSITIVE, NEUTRAL, or NEGATIVE. Answer with the label only.\n\nInput:\ndrug:\nBelviq\n\ncondition:\nWeight Loss\n\npatient_report:\nI have been on Belviq for 4 days now and I have not lost any weight yet, but I do notice a huge difference when I sit down to eat. I am so much fuller even after the 3rd bite. My cravings during work hours have gone away, and I am able to go almost all day without pigging out. Mcdonalds is walking distance from my work as well. I am 5'6 and 188 LBS. I will keep yall updated.\n\nOutput:\n",
+  "completion": "NEUTRAL",
+  "text": "You are a decision-support assistant for clinicians and pharmacists. Read the patient's own report about a medication and classify the reported experience as POSITIVE, NEUTRAL, or NEGATIVE. Answer with the label only.\n\nInput:\ndrug:\nBelviq\n\ncondition:\nWeight Loss\n\npatient_report:\nI have been on Belviq for 4 days now and I have not lost any weight yet, but I do notice a huge difference when I sit down to eat. I am so much fuller even after the 3rd bite. My cravings during work hours have gone away, and I am able to go almost all day without pigging out. Mcdonalds is walking distance from my work as well. I am 5'6 and 188 LBS. I will keep yall updated.\n\nOutput:\nNEUTRAL",
+  "messages": [
+    {
+      "role": "user",
+      "content": "You are a decision-support assistant for clinicians and pharmacists. Read the patient's own report about a medication and classify the reported experience as POSITIVE, NEUTRAL, or NEGATIVE. Answer with the label only.\n\nInput:\ndrug:\nBelviq\n\ncondition:\nWeight Loss\n\npatient_report:\nI have been on Belviq for 4 days now and I have not lost any weight yet, but I do notice a huge difference when I sit down to eat. I am so much fuller even after the 3rd bite. My cravings during work hours have gone away, and I am able to go almost all day without pigging out. Mcdonalds is walking distance from my work as well. I am 5'6 and 188 LBS. I will keep yall updated.\n\nOutput:\n"
+    },
+    {
+      "role": "assistant",
+      "content": "NEUTRAL"
+    }
+  ],
+  "meta": {
+    "uniqueID": 4735,
+    "rating": 6,
+    "tlp": "TLP:GREEN",
+    "is_chronic": 0,
+    "review_word_len": 80,
+    "drug": "Belviq",
+    "condition": "Weight Loss",
+    "experience": "NEUTRAL"
+  }
+}

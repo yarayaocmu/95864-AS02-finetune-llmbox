@@ -1,0 +1,59 @@
+{
+  "tag": "timing_check",
+  "model": "finetuned_timing/merged",
+  "adapter": null,
+  "data": "data/as02/splits/test.jsonl",
+  "n": 5,
+  "seconds": 1.6,
+  "sec_per_prompt": 0.31,
+  "format_compliance_exact_label_only": 1.0,
+  "parseable_label_anywhere": 1.0,
+  "accuracy": 0.4,
+  "macro_f1": 0.222,
+  "negative_recall": 1.0,
+  "majority_class_baseline_accuracy": 0.4,
+  "per_class": {
+    "POSITIVE": {
+      "support": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "NEUTRAL": {
+      "support": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "NEGATIVE": {
+      "support": 2,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.667
+    }
+  },
+  "confusion(gold->pred)": {
+    "POSITIVE": {
+      "POSITIVE": 0,
+      "NEUTRAL": 0,
+      "NEGATIVE": 1,
+      "NONE": 0
+    },
+    "NEUTRAL": {
+      "POSITIVE": 1,
+      "NEUTRAL": 0,
+      "NEGATIVE": 1,
+      "NONE": 0
+    },
+    "NEGATIVE": {
+      "POSITIVE": 0,
+      "NEUTRAL": 0,
+      "NEGATIVE": 2,
+      "NONE": 0
+    }
+  },
+  "accuracy_chronic_subgroup": 0.5,
+  "accuracy_non_chronic": 0.333,
+  "off_by_two_errors (POSITIVE<->NEGATIVE)": 1,
+  "example_non_compliant_outputs": []
+}

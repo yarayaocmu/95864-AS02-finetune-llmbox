@@ -1,0 +1,95 @@
+model:
+  name: gemma3_270m_it
+  source: local
+  model_id: google/gemma-3-270m-it
+  local_path: models/llms/google/gemma-3-270m-it
+  architecture: gemma3_text
+  dtype: float32
+  device: auto
+  trust_remote_code: false
+  supports_tool_calling: false
+  supports_structured_output: true
+  tool_calling_format: generic
+  chat_template_kwargs: {}
+  assistant_mask_strategy: verified_prefix
+  add_prefix: null
+  add_suffix: null
+  add_specialtokens: []
+mode:
+  name: finetune
+data:
+  type: jsonl
+  path: data/as02/splits/train.jsonl
+  min_turns: 1
+  eval_split: 0.1
+  raw_path: null
+  original_path: null
+  text_columns: []
+  target_columns: []
+  label_maps: {}
+  instruction: ''
+  output_dir: null
+  train_fraction: null
+  split: null
+optimizer:
+  name: adamw
+  learning_rate: 2.0e-05
+  weight_decay: 0.0
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  momentum: 0.0
+generation:
+  max_new_tokens: 512
+  temperature: 1.0
+  top_p: 0.95
+  top_k: 64
+  do_sample: true
+  repetition_penalty: 1.0
+tool_calling:
+  enabled: false
+  tool_choice: auto
+  tools: []
+structured_output:
+  enabled: false
+  schema_path: null
+  strict: true
+training:
+  enabled: true
+  method: lora
+  epochs: 0.08
+  batch_size: 2
+  grad_accum_steps: 8
+  warmup_ratio: 0.03
+  max_length: 512
+  lora_r: 8
+  lora_alpha: 16
+  lora_dropout: 0.05
+  lora_target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+  run_name: timing
+  prefix_length: 30
+  adapters_dim: 64
+  bitfit_bias_params: []
+  freeze_modules: []
+  logging_steps: 5
+  save_steps: 1000
+  eval_steps: 6
+  output_dir: ./finetuned_timing
+  merge_adapter: true
+  token_budget: 1000000
+  report_metrics: true
+prompt: null
+prompt_file: null
+username: null
+system_prompt: You are a helpful assistant.
+seed: 42
+output_dir: outputs
+metrics: null

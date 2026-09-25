@@ -1,0 +1,17 @@
+{
+  "evalset": "data/as02/smoke/evalset_smoke_phi4_base.jsonl",
+  "n": 6,
+  "criteria": "The response is exactly one of POSITIVE / NEUTRAL / NEGATIVE and matches the experience a clinician would read from the report.",
+  "judge_likert_distribution": {
+    "5": 6
+  },
+  "gold_rubric_likert_distribution": {
+    "3": 3,
+    "5": 3
+  },
+  "judge_class_agreement_with_gold": 0.5,
+  "judge_vs_gold_rubric_percent_agreement": 0.5,
+  "judge_vs_gold_rubric_cohen_kappa": 0.0,
+  "mean_judge_likert": 5.0,
+  "share_rated_5": 1.0
+}

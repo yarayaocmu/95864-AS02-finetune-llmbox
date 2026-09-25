@@ -1,0 +1,240 @@
+[2026-09-25 12:18:56,921][__main__][INFO] - Resolved configuration:
+model:
+  name: gemma3_270m_it
+  source: local
+  model_id: google/gemma-3-270m-it
+  local_path: models/llms/google/gemma-3-270m-it
+  architecture: gemma3_text
+  dtype: float32
+  device: auto
+  trust_remote_code: false
+  supports_tool_calling: false
+  supports_structured_output: true
+  tool_calling_format: generic
+  chat_template_kwargs: {}
+  assistant_mask_strategy: verified_prefix
+  add_prefix: null
+  add_suffix: null
+  add_specialtokens: []
+mode:
+  name: finetune
+data:
+  type: jsonl
+  path: data/as02/splits/train.jsonl
+  min_turns: 1
+  eval_split: 0.1
+  raw_path: null
+  original_path: null
+  text_columns: []
+  target_columns: []
+  label_maps: {}
+  instruction: ''
+  output_dir: null
+  train_fraction: null
+  split: null
+optimizer:
+  name: adamw
+  learning_rate: 2.0e-05
+  weight_decay: 0.0
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  momentum: 0.0
+generation:
+  max_new_tokens: 512
+  temperature: 1.0
+  top_p: 0.95
+  top_k: 64
+  do_sample: true
+  repetition_penalty: 1.0
+tool_calling:
+  enabled: false
+  tool_choice: auto
+  tools: []
+structured_output:
+  enabled: false
+  schema_path: null
+  strict: true
+training:
+  enabled: true
+  method: lora
+  epochs: 3.0
+  batch_size: 2
+  grad_accum_steps: 8
+  warmup_ratio: 0.03
+  max_length: 512
+  lora_r: 8
+  lora_alpha: 16
+  lora_dropout: 0.05
+  lora_target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+  run_name: exp1_baseline
+  prefix_length: 30
+  adapters_dim: 64
+  bitfit_bias_params: []
+  freeze_modules: []
+  logging_steps: 5
+  save_steps: 1000
+  eval_steps: 25
+  output_dir: ./finetuned_exp1_baseline
+  merge_adapter: true
+  token_budget: 1000000
+  report_metrics: true
+prompt: null
+prompt_file: null
+username: null
+system_prompt: You are a helpful assistant.
+seed: 42
+output_dir: outputs
+metrics: null
+
+[2026-09-25 12:18:59,599][src.modes][INFO] - Loading 'gemma3_270m_it' (source=local, models/llms/google/gemma-3-270m-it) for training...
+Loading weights:   0%|          | 0/236 [00:00<?, ?it/s]Loading weights:   0%|          | 1/236 [00:00<00:56,  4.17it/s]Loading weights: 100%|██████████| 236/236 [00:00<00:00, 973.26it/s]
+trainable params: 1,898,496 || all params: 269,996,672 || trainable%: 0.7032
+[2026-09-25 12:19:00,636][src.data_services][INFO] - Loaded 2400 conversations from data/as02/splits/train.jsonl.
+[2026-09-25 12:19:00,636][src.modes][INFO] - Loaded 2400 conversation(s).
+[2026-09-25 12:19:00,637][src.modes][INFO] - Train: 2160  Eval: 240
+[2026-09-25 12:19:01,818][src.data_services][INFO] - Prepared 2160 tokenized training examples.
+[2026-09-25 12:19:01,947][src.data_services][INFO] - Prepared 240 tokenized training examples.
+[2026-09-25 12:19:01,961][src.modes][INFO] - Starting finetune (method=lora, optimizer=adamw)...
+  0%|          | 0/405 [00:00<?, ?it/s]/Users/yaoyuan/Desktop/26 Fall/AMD/AS/AS02/llmbox/.venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py:759: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  0%|          | 1/405 [00:01<12:17,  1.83s/it]  0%|          | 2/405 [00:03<11:18,  1.68s/it]  1%|          | 3/405 [00:05<11:58,  1.79s/it]  1%|          | 4/405 [00:07<12:24,  1.86s/it]  1%|          | 5/405 [00:09<12:23,  1.86s/it]                                                 1%|          | 5/405 [00:09<12:23,  1.86s/it]  1%|▏         | 6/405 [00:10<12:13,  1.84s/it]  2%|▏         | 7/405 [00:12<12:36,  1.90s/it]  2%|▏         | 8/405 [00:14<12:41,  1.92s/it]  2%|▏         | 9/405 [00:16<12:34,  1.91s/it]  2%|▏         | 10/405 [00:18<12:46,  1.94s/it]                                                  2%|▏         | 10/405 [00:18<12:46,  1.94s/it]  3%|▎         | 11/405 [00:20<12:59,  1.98s/it]  3%|▎         | 12/405 [00:22<12:46,  1.95s/it]  3%|▎         | 13/405 [00:24<12:40,  1.94s/it]  3%|▎         | 14/405 [00:26<12:39,  1.94s/it]  4%|▎         | 15/405 [00:28<12:15,  1.88s/it]                                                  4%|▎         | 15/405 [00:28<12:15,  1.88s/it]  4%|▍         | 16/405 [00:30<12:17,  1.90s/it]  4%|▍         | 17/405 [00:31<11:48,  1.83s/it]  4%|▍         | 18/405 [00:33<11:36,  1.80s/it]  5%|▍         | 19/405 [00:35<11:45,  1.83s/it]  5%|▍         | 20/405 [00:37<11:38,  1.81s/it]                                                  5%|▍         | 20/405 [00:37<11:38,  1.81s/it]  5%|▌         | 21/405 [00:39<11:34,  1.81s/it]  5%|▌         | 22/405 [00:40<11:24,  1.79s/it]  6%|▌         | 23/405 [00:42<11:13,  1.76s/it]  6%|▌         | 24/405 [00:44<11:08,  1.75s/it]  6%|▌         | 25/405 [00:46<11:16,  1.78s/it]                                                  6%|▌         | 25/405 [00:46<11:16,  1.78s/it]{'loss': '2.868', 'grad_norm': '74.26', 'learning_rate': '6.154e-06', 'epoch': '0.03704', 'num_input_tokens_seen': 16656, 'train_runtime': '9.158', 'train_tokens_per_second': '1819'}
+{'loss': '1.955', 'grad_norm': '45.55', 'learning_rate': '1.385e-05', 'epoch': '0.07407', 'num_input_tokens_seen': 33786, 'train_runtime': '18.84', 'train_tokens_per_second': '1794'}
+{'loss': '0.8934', 'grad_norm': '11.5', 'learning_rate': '1.995e-05', 'epoch': '0.1111', 'num_input_tokens_seen': 51276, 'train_runtime': '28.4', 'train_tokens_per_second': '1805'}
+{'loss': '0.5172', 'grad_norm': '9.117', 'learning_rate': '1.969e-05', 'epoch': '0.1481', 'num_input_tokens_seen': 68750, 'train_runtime': '37.39', 'train_tokens_per_second': '1839'}
+{'loss': '0.3749', 'grad_norm': '9.916', 'learning_rate': '1.944e-05', 'epoch': '0.1852', 'num_input_tokens_seen': 86066, 'train_runtime': '46.21', 'train_tokens_per_second': '1862'}
+
+  0%|          | 0/120 [00:00<?, ?it/s][A
+  2%|▎         | 3/120 [00:00<00:07, 16.19it/s][A
+  4%|▍         | 5/120 [00:00<00:08, 13.14it/s][A
+  6%|▌         | 7/120 [00:00<00:08, 13.17it/s][A
+  8%|▊         | 9/120 [00:00<00:08, 13.09it/s][A
+  9%|▉         | 11/120 [00:00<00:09, 11.69it/s][A
+ 11%|█         | 13/120 [00:01<00:09, 11.83it/s][A
+ 12%|█▎        | 15/120 [00:01<00:11,  9.54it/s][A
+ 14%|█▍        | 17/120 [00:01<00:09, 11.14it/s][A
+ 16%|█▌        | 19/120 [00:01<00:08, 11.64it/s][A
+ 18%|█▊        | 21/120 [00:01<00:08, 11.63it/s][A
+ 19%|█▉        | 23/120 [00:01<00:07, 12.20it/s][A
+ 21%|██        | 25/120 [00:02<00:07, 12.69it/s][A
+ 22%|██▎       | 27/120 [00:02<00:07, 11.79it/s][A
+ 24%|██▍       | 29/120 [00:02<00:07, 11.80it/s][A
+ 26%|██▌       | 31/120 [00:02<00:07, 11.79it/s][A
+ 28%|██▊       | 33/120 [00:02<00:07, 11.63it/s][A
+ 29%|██▉       | 35/120 [00:02<00:06, 12.29it/s][A
+ 31%|███       | 37/120 [00:03<00:06, 12.19it/s][A
+ 32%|███▎      | 39/120 [00:03<00:06, 12.35it/s][A
+ 34%|███▍      | 41/120 [00:03<00:06, 11.73it/s][A
+ 36%|███▌      | 43/120 [00:03<00:06, 11.63it/s][A
+ 38%|███▊      | 45/120 [00:03<00:05, 13.20it/s][A
+ 39%|███▉      | 47/120 [00:03<00:05, 13.20it/s][A
+ 41%|████      | 49/120 [00:03<00:05, 14.15it/s][A
+ 42%|████▎     | 51/120 [00:04<00:05, 12.92it/s][A
+ 44%|████▍     | 53/120 [00:04<00:05, 13.10it/s][A
+ 46%|████▌     | 55/120 [00:04<00:05, 12.75it/s][A
+ 48%|████▊     | 57/120 [00:04<00:05, 12.17it/s][A
+ 49%|████▉     | 59/120 [00:04<00:05, 11.46it/s][A
+ 51%|█████     | 61/120 [00:04<00:04, 12.45it/s][A
+ 52%|█████▎    | 63/120 [00:05<00:04, 11.64it/s][A
+ 54%|█████▍    | 65/120 [00:05<00:04, 11.52it/s][A
+ 56%|█████▌    | 67/120 [00:05<00:04, 11.11it/s][A
+ 57%|█████▊    | 69/120 [00:05<00:04, 11.61it/s][A
+ 59%|█████▉    | 71/120 [00:05<00:04, 11.82it/s][A
+ 61%|██████    | 73/120 [00:06<00:04, 11.56it/s][A
+ 62%|██████▎   | 75/120 [00:06<00:03, 11.52it/s][A
+ 64%|██████▍   | 77/120 [00:06<00:03, 11.98it/s][A
+ 66%|██████▌   | 79/120 [00:06<00:03, 11.51it/s][A
+ 68%|██████▊   | 81/120 [00:06<00:03, 10.92it/s][A
+ 69%|██████▉   | 83/120 [00:06<00:03, 11.19it/s][A
+ 71%|███████   | 85/120 [00:07<00:03, 11.10it/s][A
+ 72%|███████▎  | 87/120 [00:07<00:02, 11.49it/s][A
+ 74%|███████▍  | 89/120 [00:07<00:02, 11.96it/s][A
+ 76%|███████▌  | 91/120 [00:07<00:02, 11.19it/s][A
+ 78%|███████▊  | 93/120 [00:07<00:02, 11.84it/s][A
+ 79%|███████▉  | 95/120 [00:08<00:02, 11.11it/s][A
+ 81%|████████  | 97/120 [00:08<00:01, 11.76it/s][A
+ 82%|████████▎ | 99/120 [00:08<00:01, 12.09it/s][A
+ 84%|████████▍ | 101/120 [00:08<00:01, 11.30it/s][A
+ 86%|████████▌ | 103/120 [00:08<00:01, 11.52it/s][A
+ 88%|████████▊ | 105/120 [00:08<00:01, 11.90it/s][A
+ 89%|████████▉ | 107/120 [00:09<00:01, 11.70it/s][A
+ 91%|█████████ | 109/120 [00:09<00:00, 12.11it/s][A
+ 92%|█████████▎| 111/120 [00:09<00:00, 11.47it/s][A
+ 94%|█████████▍| 113/120 [00:09<00:00, 11.63it/s][A
+ 96%|█████████▌| 115/120 [00:09<00:00, 11.50it/s][A
+ 98%|█████████▊| 117/120 [00:09<00:00, 11.45it/s][A
+ 99%|█████████▉| 119/120 [00:10<00:00, 11.60it/s][A                                                
+                                                 [A  6%|▌         | 25/405 [00:56<11:16,  1.78s/it]
+100%|██████████| 120/120 [00:10<00:00, 11.60it/s][A
+                                                 [A  6%|▋         | 26/405 [00:58<30:32,  4.84s/it]  7%|▋         | 27/405 [00:59<24:31,  3.89s/it]  7%|▋         | 28/405 [01:01<20:12,  3.22s/it]{'eval_loss': '0.3448', 'eval_runtime': '10.19', 'eval_samples_per_second': '23.56', 'eval_steps_per_second': '11.78', 'epoch': '0.1852', 'num_input_tokens_seen': 86066}
+Error executing job with overrides: ['mode=finetune', 'training.enabled=true', 'training.method=lora', 'data=jsonl', 'data.path=data/as02/splits/train.jsonl', 'data.eval_split=0.1', 'model=gemma3_270m', 'model.source=local', 'model.local_path=models/llms/google/gemma-3-270m-it', 'model.dtype=float32', 'training.max_length=512', 'training.logging_steps=5', 'training.eval_steps=25', 'training.save_steps=1000', 'training.merge_adapter=true', 'training.run_name=exp1_baseline', 'training.output_dir=./finetuned_exp1_baseline', 'training.epochs=3', 'training.batch_size=2', 'training.grad_accum_steps=8', 'training.warmup_ratio=0.03', 'optimizer=adamw', 'optimizer.learning_rate=2e-5', 'training.lora_r=8', 'training.lora_alpha=16', 'training.lora_dropout=0.05']
+Traceback (most recent call last):
+  File "/Users/yaoyuan/Desktop/26 Fall/AMD/AS/AS02/llmbox/startllm.py", line 261, in llmbox
+    _DISPATCH[mode_name](cfg)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/yaoyuan/Desktop/26 Fall/AMD/AS/AS02/llmbox/src/modes.py", line 673, in run_finetune
+    self._run_training(cfg, allow_lora=True)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yaoyuan/Desktop/26 Fall/AMD/AS/AS02/llmbox/src/modes.py", line 626, in _run_training
+    trainer.train()
+    ~~~~~~~~~~~~~^^
+  File "/Users/yaoyuan/Desktop/26 Fall/AMD/AS/AS02/llmbox/.venv/lib/python3.13/site-packages/transformers/trainer.py", line 1520, in train
+    return inner_training_loop(
+        args=args,
+    ...<2 lines>...
+        ignore_keys_for_eval=ignore_keys_for_eval,
+    )
+  File "/Users/yaoyuan/Desktop/26 Fall/AMD/AS/AS02/llmbox/.venv/lib/python3.13/site-packages/transformers/trainer.py", line 1602, in _inner_training_loop
+    self._run_epoch(
+    ~~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<9 lines>...
+        steps_trained_in_current_epoch=steps_trained_in_current_epoch,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/yaoyuan/Desktop/26 Fall/AMD/AS/AS02/llmbox/.venv/lib/python3.13/site-packages/transformers/trainer.py", line 1842, in _run_epoch
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/Users/yaoyuan/Desktop/26 Fall/AMD/AS/AS02/llmbox/.venv/lib/python3.13/site-packages/transformers/trainer.py", line 2044, in training_step
+    self.accelerator.backward(loss, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/yaoyuan/Desktop/26 Fall/AMD/AS/AS02/llmbox/.venv/lib/python3.13/site-packages/accelerate/accelerator.py", line 2861, in backward
+    loss.backward(**kwargs)
+    ~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/yaoyuan/Desktop/26 Fall/AMD/AS/AS02/llmbox/.venv/lib/python3.13/site-packages/torch/_tensor.py", line 623, in backward
+    torch.autograd.backward(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        self, gradient, retain_graph, create_graph, inputs=inputs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/yaoyuan/Desktop/26 Fall/AMD/AS/AS02/llmbox/.venv/lib/python3.13/site-packages/torch/autograd/__init__.py", line 395, in backward
+    _engine_run_backward(
+    ~~~~~~~~~~~~~~~~~~~~^
+        tensors,
+        ^^^^^^^^
+    ...<5 lines>...
+        accumulate_grad=True,
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/yaoyuan/Desktop/26 Fall/AMD/AS/AS02/llmbox/.venv/lib/python3.13/site-packages/torch/autograd/graph.py", line 1072, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        t_outputs, *args, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )  # Calls into the C++ engine to run the backward pass
+    ^
+RuntimeError: MPS backend out of memory (MPS allocated: 10.28 GiB, other allocations: 53.08 GiB, max allowed: 63.65 GiB). Tried to allocate 528.00 MiB on shared pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+  7%|▋         | 28/405 [01:02<14:07,  2.25s/it]

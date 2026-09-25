@@ -1,0 +1,9 @@
+
+# AS02 additions
+.venv/
+models/
+finetuned_*/
+__pycache__/
+*.pyc
+outputs/20*/
+.DS_Store

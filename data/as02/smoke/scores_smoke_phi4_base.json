@@ -1,0 +1,59 @@
+{
+  "tag": "smoke_phi4_base",
+  "model": "/Users/yaoyuan/Desktop/26 Fall/AMD/labs/lab01/models/phi4-mini-instruct",
+  "adapter": null,
+  "data": "data/as02/splits/test.jsonl",
+  "n": 6,
+  "seconds": 3.2,
+  "sec_per_prompt": 0.53,
+  "format_compliance_exact_label_only": 1.0,
+  "parseable_label_anywhere": 1.0,
+  "accuracy": 0.5,
+  "macro_f1": 0.444,
+  "negative_recall": 1.0,
+  "majority_class_baseline_accuracy": 0.5,
+  "per_class": {
+    "POSITIVE": {
+      "support": 1,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.667
+    },
+    "NEUTRAL": {
+      "support": 3,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "NEGATIVE": {
+      "support": 2,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.667
+    }
+  },
+  "confusion(gold->pred)": {
+    "POSITIVE": {
+      "POSITIVE": 1,
+      "NEUTRAL": 0,
+      "NEGATIVE": 0,
+      "NONE": 0
+    },
+    "NEUTRAL": {
+      "POSITIVE": 1,
+      "NEUTRAL": 0,
+      "NEGATIVE": 2,
+      "NONE": 0
+    },
+    "NEGATIVE": {
+      "POSITIVE": 0,
+      "NEUTRAL": 0,
+      "NEGATIVE": 2,
+      "NONE": 0
+    }
+  },
+  "accuracy_chronic_subgroup": 0.5,
+  "accuracy_non_chronic": 0.5,
+  "off_by_two_errors (POSITIVE<->NEGATIVE)": 0,
+  "example_non_compliant_outputs": []
+}

@@ -1,0 +1,43 @@
+{
+  "source": "/Users/yaoyuan/Desktop/26 Fall/AMD/AS/AS01/as01_v02/data/clean/reviews_clean.parquet",
+  "seed": 42,
+  "rows_clean_as01": 214078,
+  "rows_after_tlp_filter(GREEN,CLEAR)": 160770,
+  "rows_after_brand_generic_dedup": 97340,
+  "rows_after_drop_missing_condition": 96428,
+  "rows_after_length_filter(5..300 words)": 95673,
+  "n_drugs_total": 2946,
+  "n_drugs_held_out": 294,
+  "rows_unseen_drug_pool": 8900,
+  "natural_class_share_in_pool": {
+    "POSITIVE": 0.655,
+    "NEGATIVE": 0.255,
+    "NEUTRAL": 0.09
+  },
+  "sampled_rows": 3000,
+  "sampled_class_counts": {
+    "NEUTRAL": 1000,
+    "NEGATIVE": 1000,
+    "POSITIVE": 1000
+  },
+  "transformed_written": 3000,
+  "unseen_drug_eval_written": 150,
+  "split": {
+    "train_path": "/Users/yaoyuan/Desktop/26 Fall/AMD/AS/AS02/llmbox/data/as02/splits/train.jsonl",
+    "test_path": "/Users/yaoyuan/Desktop/26 Fall/AMD/AS/AS02/llmbox/data/as02/splits/test.jsonl",
+    "train_count": 2400,
+    "test_count": 600,
+    "total_count": 3000,
+    "actual_train_fraction": 0.8
+  },
+  "train_class_counts": {
+    "NEUTRAL": 817,
+    "POSITIVE": 802,
+    "NEGATIVE": 781
+  },
+  "test_class_counts": {
+    "NEGATIVE": 219,
+    "POSITIVE": 198,
+    "NEUTRAL": 183
+  }
+}

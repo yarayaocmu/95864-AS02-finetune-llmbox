@@ -1,0 +1,12 @@
+{
+  "run_name": "smoke_phi4",
+  "trainable_params": 4456448,
+  "total_params": 3840478208,
+  "trainable_pct": 0.116,
+  "global_steps": 4,
+  "train_examples": 2376,
+  "eval_examples": 24,
+  "device": "mps",
+  "dtype": "torch.bfloat16",
+  "metrics_file": "data/evaluations/finetune_phi4_instruct_20260925_160257_metrics.json"
+}

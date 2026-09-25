@@ -1,0 +1,4 @@
+completion,train,test,train_pct
+NEGATIVE,781,219,32.5
+NEUTRAL,817,183,34.0
+POSITIVE,802,198,33.4

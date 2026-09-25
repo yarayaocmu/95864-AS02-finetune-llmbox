@@ -1,0 +1,210 @@
+{
+  "n_train": 2400,
+  "n_test": 600,
+  "train_label_counts": {
+    "NEUTRAL": 817,
+    "POSITIVE": 802,
+    "NEGATIVE": 781
+  },
+  "test_label_counts": {
+    "NEGATIVE": 219,
+    "POSITIVE": 198,
+    "NEUTRAL": 183
+  },
+  "train_rating_by_label": {
+    "NEGATIVE": {
+      "min": 1,
+      "max": 4,
+      "mean": 1.84
+    },
+    "NEUTRAL": {
+      "min": 5,
+      "max": 6,
+      "mean": 5.44
+    },
+    "POSITIVE": {
+      "min": 7,
+      "max": 10,
+      "mean": 9.16
+    }
+  },
+  "train_tlp_counts": {
+    "TLP:GREEN": 2380,
+    "TLP:CLEAR": 20
+  },
+  "train_chronic_share": 0.227,
+  "train_n_unique_drugs": 698,
+  "train_n_unique_conditions": 269,
+  "train_top_conditions": {
+    "Birth Control": 363,
+    "Depression": 144,
+    "Pain": 106,
+    "Anxiety": 106,
+    "Insomnia": 93,
+    "Vaginal Yeast Infection": 84,
+    "Acne": 83,
+    "Bipolar Disorde": 61,
+    "Obesity": 60,
+    "High Blood Pressure": 40,
+    "Diabetes, Type 2": 35,
+    "ibromyalgia": 35,
+    "Anxiety and Stress": 35,
+    "Migraine Prevention": 32,
+    "Bowel Preparation": 30
+  },
+  "train_top_drugs": {
+    "Etonogestrel": 54,
+    "Ethinyl estradiol / norethindrone": 52,
+    "Miconazole": 40,
+    "Nexplanon": 38,
+    "Gabapentin": 37,
+    "Metronidazole": 34,
+    "Levonorgestrel": 32,
+    "Ethinyl estradiol / levonorgestrel": 31,
+    "Ethinyl estradiol / norgestimate": 31,
+    "Tioconazole": 28,
+    "Trazodone": 24,
+    "Mirtazapine": 23,
+    "Contrave": 23,
+    "Sertraline": 22,
+    "Bupropion / naltrexone": 20
+  },
+  "train_length_stats": {
+    "review_word_len": {
+      "count": 2400.0,
+      "mean": 79.3,
+      "std": 42.2,
+      "min": 5.0,
+      "25%": 43.0,
+      "50%": 77.5,
+      "75%": 117.2,
+      "max": 174.0
+    },
+    "prompt_words": {
+      "count": 2400.0,
+      "mean": 119.6,
+      "std": 42.2,
+      "min": 44.0,
+      "25%": 84.0,
+      "50%": 117.0,
+      "75%": 158.0,
+      "max": 213.0
+    },
+    "prompt_chars": {
+      "count": 2400.0,
+      "mean": 720.7,
+      "std": 221.7,
+      "min": 312.0,
+      "25%": 530.8,
+      "50%": 708.5,
+      "75%": 926.0,
+      "max": 1140.0
+    }
+  },
+  "train_length_by_label": {
+    "NEGATIVE": {
+      "count": 781.0,
+      "mean": 73.0,
+      "std": 42.0,
+      "min": 5.0,
+      "25%": 36.0,
+      "50%": 67.0,
+      "75%": 109.0,
+      "max": 159.0
+    },
+    "NEUTRAL": {
+      "count": 817.0,
+      "mean": 82.0,
+      "std": 40.4,
+      "min": 5.0,
+      "25%": 49.0,
+      "50%": 82.0,
+      "75%": 117.0,
+      "max": 174.0
+    },
+    "POSITIVE": {
+      "count": 802.0,
+      "mean": 82.6,
+      "std": 43.6,
+      "min": 5.0,
+      "25%": 45.0,
+      "50%": 84.0,
+      "75%": 124.8,
+      "max": 157.0
+    }
+  },
+  "duplicates": {
+    "exact_duplicate_prompts_in_train": 0,
+    "train_test_prompt_overlap": 0,
+    "same_review_text_under_multiple_drugs_in_train": 0
+  },
+  "artifacts": {
+    "condition_truncated_name (e.g. 'Bipolar Disorde')": 160,
+    "report_contains_html_entity": 0,
+    "report_contains_url": 0,
+    "report_non_ascii_chars": 22,
+    "report_all_caps_words(>=3)": 2400,
+    "report_shorter_than_10_words": 49
+  },
+  "sensitive_scan": {
+    "explicit_age (e.g. 'I am 34', '34 years old', '34 yo')": {
+      "rows": 10,
+      "pct": 0.42
+    },
+    "named_doctor ('Dr. Smith')": {
+      "rows": 8,
+      "pct": 0.33
+    },
+    "third_party_family (my son/daughter/wife/husband/mother/father)": {
+      "rows": 3,
+      "pct": 0.12
+    },
+    "pregnancy / breastfeeding": {
+      "rows": 3,
+      "pct": 0.12
+    },
+    "email_address": {
+      "rows": 0,
+      "pct": 0.0
+    },
+    "phone_number": {
+      "rows": 0,
+      "pct": 0.0
+    },
+    "full_date (mm/dd/yyyy)": {
+      "rows": 11,
+      "pct": 0.46
+    },
+    "weight_or_height ('188 lbs', \"5'6\")": {
+      "rows": 153,
+      "pct": 6.38
+    },
+    "location_mention (city/state/country words)": {
+      "rows": 3,
+      "pct": 0.12
+    },
+    "crisis_words (suicid/overdose)": {
+      "rows": 0,
+      "pct": 0.0
+    },
+    "substance_dependence (addict/withdrawal/rehab)": {
+      "rows": 51,
+      "pct": 2.12
+    },
+    "explicit_sexual_health_terms": {
+      "rows": 177,
+      "pct": 7.38
+    }
+  },
+  "sensitive_scan_examples": {
+    "explicit_age (e.g. 'I am 34', '34 years old', '34 yo')": "...is has helped my acne tremendously.  Especially on my face. Im 16 and have suffered from acne since middle school I was presc...",
+    "named_doctor ('Dr. Smith')": "... have been seeing a chiropractor for my back and I asked my Dr. to prescribe this medicine again and WOW is all I can say.  I ...",
+    "third_party_family (my son/daughter/wife/husband/mother/father)": "... all.  I was snapping at people, got easily frustrated with my children, and would feel very down on myself in general.\r \r Since go...",
+    "pregnancy / breastfeeding": "...only.  Input: drug: Diclegis  condition: Nausea/Vomiting of Pregnancy  patient_report: I was completely disabled by my nausea. I ...",
+    "full_date (mm/dd/yyyy)": "...bamol  condition: Muscle Spasm  patient_report: On Thursday 04/27/17, I decided to have my PCP prescribe a med for my chronic lo...",
+    "weight_or_height ('188 lbs', \"5'6\")": "...d no bad experiences other than a little weight gain (about 10lbs) but that is to be expected. I take my pill at the same tim...",
+    "location_mention (city/state/country words)": "....  But I guess the results are worth it.  As a state worker in California, though, I may have to investigate less expensive options s...",
+    "substance_dependence (addict/withdrawal/rehab)": "...backed to 37.5 before going cold turkey. I didn't  have any withdrawal symptoms. Good luck to anyone on this medication.  Output: ...",
+    "explicit_sexual_health_terms": "...e, the following month was great no bleeding no cramping my sex drive was great. But now my last two months have been non s..."
+  }
+}

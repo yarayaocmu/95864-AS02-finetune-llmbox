@@ -137,6 +137,12 @@ class TrainingConfig:
     lora_r: int = 8
     lora_alpha: int = 16
     lora_dropout: float = 0.05
+    # AS02 edit (Y. Yao, Sept 2026): which linear layers get LoRA adapters.
+    # Attention-only = [q_proj, k_proj, v_proj, o_proj]; MLP-only = [gate_proj, up_proj, down_proj].
+    lora_target_modules: List[str] = field(default_factory=lambda: [
+        "q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"])
+    # AS02 edit: free-text label written into the metrics file name / snapshot.
+    run_name: Optional[str] = None
     prefix_length: int = 30            # For prefix-tuning
     adapters_dim: int = 64             # For adapters
     bitfit_bias_params: Optional[List[str]] = field(default_factory=lambda: [])  # For BitFit, e.g. ['bias']

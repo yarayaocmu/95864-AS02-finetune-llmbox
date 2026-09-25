@@ -1,0 +1,13 @@
+,rows,pct
+"explicit_age (e.g. 'I am 34', '34 years old', '34 yo')",10.0,0.42
+named_doctor ('Dr. Smith'),8.0,0.33
+third_party_family (my son/daughter/wife/husband/mother/father),3.0,0.12
+pregnancy / breastfeeding,3.0,0.12
+email_address,0.0,0.0
+phone_number,0.0,0.0
+full_date (mm/dd/yyyy),11.0,0.46
+"weight_or_height ('188 lbs', ""5'6"")",153.0,6.38
+location_mention (city/state/country words),3.0,0.12
+crisis_words (suicid/overdose),0.0,0.0
+substance_dependence (addict/withdrawal/rehab),51.0,2.12
+explicit_sexual_health_terms,177.0,7.38

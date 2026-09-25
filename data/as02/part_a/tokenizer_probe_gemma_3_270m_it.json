@@ -1,0 +1,241 @@
+{
+  "model": "models/llms/google/gemma-3-270m-it",
+  "vocab_size": 262144,
+  "max_length": 512,
+  "examples": 2400,
+  "tokens_total": {
+    "count": 2400.0,
+    "mean": 183.9,
+    "std": 53.6,
+    "min": 86.0,
+    "25%": 138.0,
+    "50%": 181.0,
+    "75%": 231.0,
+    "max": 310.0
+  },
+  "tokens_trainable": {
+    "count": 2400.0,
+    "mean": 3.34,
+    "std": 0.47,
+    "min": 3.0,
+    "25%": 3.0,
+    "50%": 3.0,
+    "75%": 4.0,
+    "max": 4.0
+  },
+  "share_of_tokens_that_carry_loss_pct": 1.82,
+  "examples_truncated": 0,
+  "total_tokens_one_epoch": 441285,
+  "label_token_pieces": {
+    "POSITIVE": [
+      "POSITIVE"
+    ],
+    "NEUTRAL": [
+      "NE",
+      "UTRAL"
+    ],
+    "NEGATIVE": [
+      "NEGATIVE"
+    ]
+  },
+  "trainable_tokens_decoded_example": "POSITIVE<end_of_turn>\n",
+  "tokenizer_probe": {
+    "Levofloxacin": [
+      "Lev",
+      "of",
+      "lox",
+      "acin"
+    ],
+    "Etonogestrel": [
+      "E",
+      "ton",
+      "og",
+      "estrel"
+    ],
+    "Nexplanon": [
+      "Nex",
+      "plan",
+      "on"
+    ],
+    "Lisdexamfetamine": [
+      "Lis",
+      "d",
+      "exam",
+      "fet",
+      "amine"
+    ],
+    "Ibuprofen": [
+      "I",
+      "bu",
+      "profen"
+    ],
+    "37.5 mg": [
+      "3",
+      "7",
+      ".",
+      "5",
+      "\u2581mg"
+    ],
+    "10-20mg": [
+      "1",
+      "0",
+      "-",
+      "2",
+      "0",
+      "mg"
+    ],
+    "IBS-D": [
+      "I",
+      "BS",
+      "-",
+      "D"
+    ],
+    "ADHD": [
+      "AD",
+      "HD"
+    ],
+    "Type 2 diabetes": [
+      "Type",
+      "\u2581",
+      "2",
+      "\u2581diabetes"
+    ],
+    "HbA1c": [
+      "Hb",
+      "A",
+      "1",
+      "c"
+    ],
+    "BP 140/90": [
+      "BP",
+      "\u2581",
+      "1",
+      "4",
+      "0",
+      "/",
+      "9",
+      "0"
+    ],
+    "b.i.d.": [
+      "b",
+      ".",
+      "i",
+      ".",
+      "d",
+      "."
+    ],
+    "PRN": [
+      "PR",
+      "N"
+    ],
+    "&#039;": [
+      "&#",
+      "0",
+      "3",
+      "9",
+      ";"
+    ],
+    "didn&#039;t": [
+      "didn",
+      "&#",
+      "0",
+      "3",
+      "9",
+      ";",
+      "t"
+    ],
+    "Bipolar Disorde": [
+      "B",
+      "ipolar",
+      "\u2581Dis",
+      "orde"
+    ],
+    "5'6 and 188 LBS": [
+      "5",
+      "'",
+      "6",
+      "\u2581and",
+      "\u2581",
+      "1",
+      "8",
+      "8",
+      "\u2581L",
+      "BS"
+    ],
+    "NEGATIVE": [
+      "NEGATIVE"
+    ],
+    "negative": [
+      "negative"
+    ],
+    "Negative": [
+      "Negative"
+    ],
+    " NEGATIVE": [
+      "\u2581NEG",
+      "ATIVE"
+    ]
+  },
+  "batch_analysis_bs_x_accum1": [
+    {
+      "batch_size": 1,
+      "grad_accum_steps": 1,
+      "effective_batch": 1,
+      "micro_batches_per_epoch": 2400,
+      "optimizer_steps_per_epoch": 2400,
+      "avg_padded_tokens_per_micro_batch": 184,
+      "padding_waste_pct": 0.0,
+      "real_tokens_per_optimizer_step": 184
+    },
+    {
+      "batch_size": 2,
+      "grad_accum_steps": 1,
+      "effective_batch": 2,
+      "micro_batches_per_epoch": 1200,
+      "optimizer_steps_per_epoch": 1200,
+      "avg_padded_tokens_per_micro_batch": 429,
+      "padding_waste_pct": 14.3,
+      "real_tokens_per_optimizer_step": 368
+    },
+    {
+      "batch_size": 4,
+      "grad_accum_steps": 1,
+      "effective_batch": 4,
+      "micro_batches_per_epoch": 600,
+      "optimizer_steps_per_epoch": 600,
+      "avg_padded_tokens_per_micro_batch": 958,
+      "padding_waste_pct": 23.3,
+      "real_tokens_per_optimizer_step": 735
+    },
+    {
+      "batch_size": 8,
+      "grad_accum_steps": 1,
+      "effective_batch": 8,
+      "micro_batches_per_epoch": 300,
+      "optimizer_steps_per_epoch": 300,
+      "avg_padded_tokens_per_micro_batch": 2064,
+      "padding_waste_pct": 28.7,
+      "real_tokens_per_optimizer_step": 1471
+    },
+    {
+      "batch_size": 16,
+      "grad_accum_steps": 1,
+      "effective_batch": 16,
+      "micro_batches_per_epoch": 150,
+      "optimizer_steps_per_epoch": 150,
+      "avg_padded_tokens_per_micro_batch": 4309,
+      "padding_waste_pct": 31.7,
+      "real_tokens_per_optimizer_step": 2942
+    },
+    {
+      "batch_size": 32,
+      "grad_accum_steps": 1,
+      "effective_batch": 32,
+      "micro_batches_per_epoch": 75,
+      "optimizer_steps_per_epoch": 75,
+      "avg_padded_tokens_per_micro_batch": 8864,
+      "padding_waste_pct": 33.6,
+      "real_tokens_per_optimizer_step": 5884
+    }
+  ]
+}

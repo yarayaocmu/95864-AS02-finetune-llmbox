@@ -1,0 +1,249 @@
+[2026-09-25 12:15:35,539][__main__][INFO] - Resolved configuration:
+model:
+  name: gemma3_270m_it
+  source: local
+  model_id: google/gemma-3-270m-it
+  local_path: models/llms/google/gemma-3-270m-it
+  architecture: gemma3_text
+  dtype: float32
+  device: auto
+  trust_remote_code: false
+  supports_tool_calling: false
+  supports_structured_output: true
+  tool_calling_format: generic
+  chat_template_kwargs: {}
+  assistant_mask_strategy: verified_prefix
+  add_prefix: null
+  add_suffix: null
+  add_specialtokens: []
+mode:
+  name: finetune
+data:
+  type: jsonl
+  path: data/as02/splits/train.jsonl
+  min_turns: 1
+  eval_split: 0.1
+  raw_path: null
+  original_path: null
+  text_columns: []
+  target_columns: []
+  label_maps: {}
+  instruction: ''
+  output_dir: null
+  train_fraction: null
+  split: null
+optimizer:
+  name: adamw
+  learning_rate: 2.0e-05
+  weight_decay: 0.0
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  momentum: 0.0
+generation:
+  max_new_tokens: 512
+  temperature: 1.0
+  top_p: 0.95
+  top_k: 64
+  do_sample: true
+  repetition_penalty: 1.0
+tool_calling:
+  enabled: false
+  tool_choice: auto
+  tools: []
+structured_output:
+  enabled: false
+  schema_path: null
+  strict: true
+training:
+  enabled: true
+  method: lora
+  epochs: 0.08
+  batch_size: 2
+  grad_accum_steps: 8
+  warmup_ratio: 0.03
+  max_length: 512
+  lora_r: 8
+  lora_alpha: 16
+  lora_dropout: 0.05
+  lora_target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+  run_name: timing
+  prefix_length: 30
+  adapters_dim: 64
+  bitfit_bias_params: []
+  freeze_modules: []
+  logging_steps: 5
+  save_steps: 1000
+  eval_steps: 6
+  output_dir: ./finetuned_timing
+  merge_adapter: true
+  token_budget: 1000000
+  report_metrics: true
+prompt: null
+prompt_file: null
+username: null
+system_prompt: You are a helpful assistant.
+seed: 42
+output_dir: outputs
+metrics: null
+
+[2026-09-25 12:15:37,739][src.modes][INFO] - Loading 'gemma3_270m_it' (source=local, models/llms/google/gemma-3-270m-it) for training...
+Loading weights:   0%|          | 0/236 [00:00<?, ?it/s]Loading weights: 100%|██████████| 236/236 [00:00<00:00, 10424.47it/s]
+trainable params: 1,898,496 || all params: 269,996,672 || trainable%: 0.7032
+[2026-09-25 12:15:38,491][src.data_services][INFO] - Loaded 2400 conversations from data/as02/splits/train.jsonl.
+[2026-09-25 12:15:38,491][src.modes][INFO] - Loaded 2400 conversation(s).
+[2026-09-25 12:15:38,492][src.modes][INFO] - Train: 2160  Eval: 240
+[2026-09-25 12:15:39,635][src.data_services][INFO] - Prepared 2160 tokenized training examples.
+[2026-09-25 12:15:39,759][src.data_services][INFO] - Prepared 240 tokenized training examples.
+[2026-09-25 12:15:39,773][src.modes][INFO] - Starting finetune (method=lora, optimizer=adamw)...
+  0%|          | 0/11 [00:00<?, ?it/s]/Users/yaoyuan/Desktop/26 Fall/AMD/AS/AS02/llmbox/.venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py:759: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  9%|▉         | 1/11 [00:04<00:46,  4.66s/it] 18%|█▊        | 2/11 [00:07<00:33,  3.72s/it] 27%|██▋       | 3/11 [00:10<00:26,  3.36s/it] 36%|███▋      | 4/11 [00:12<00:20,  2.89s/it] 45%|████▌     | 5/11 [00:14<00:15,  2.52s/it]                                               45%|████▌     | 5/11 [00:14<00:15,  2.52s/it] 55%|█████▍    | 6/11 [00:16<00:11,  2.39s/it]{'loss': '2.302', 'grad_norm': '38.72', 'learning_rate': '1.4e-05', 'epoch': '0.03704', 'num_input_tokens_seen': 16656, 'train_runtime': '14.7', 'train_tokens_per_second': '1133'}
+
+  0%|          | 0/120 [00:00<?, ?it/s][A
+  2%|▏         | 2/120 [00:00<00:05, 19.81it/s][A
+  3%|▎         | 4/120 [00:00<00:17,  6.66it/s][A
+  5%|▌         | 6/120 [00:00<00:13,  8.51it/s][A
+  7%|▋         | 8/120 [00:00<00:12,  9.16it/s][A
+  8%|▊         | 10/120 [00:01<00:11,  9.31it/s][A
+ 10%|█         | 12/120 [00:01<00:10,  9.97it/s][A
+ 12%|█▏        | 14/120 [00:01<00:10,  9.65it/s][A
+ 13%|█▎        | 16/120 [00:01<00:10,  9.55it/s][A
+ 15%|█▌        | 18/120 [00:01<00:10, 10.01it/s][A
+ 17%|█▋        | 20/120 [00:02<00:09, 10.09it/s][A
+ 18%|█▊        | 22/120 [00:02<00:09, 10.27it/s][A
+ 20%|██        | 24/120 [00:02<00:08, 10.87it/s][A
+ 22%|██▏       | 26/120 [00:02<00:08, 11.01it/s][A
+ 23%|██▎       | 28/120 [00:02<00:08, 10.31it/s][A
+ 25%|██▌       | 30/120 [00:02<00:08, 10.91it/s][A
+ 27%|██▋       | 32/120 [00:03<00:08, 10.49it/s][A
+ 28%|██▊       | 34/120 [00:03<00:08, 10.54it/s][A
+ 30%|███       | 36/120 [00:03<00:08, 10.47it/s][A
+ 32%|███▏      | 38/120 [00:03<00:07, 10.72it/s][A
+ 33%|███▎      | 40/120 [00:03<00:07, 10.70it/s][A
+ 35%|███▌      | 42/120 [00:04<00:07, 10.38it/s][A
+ 37%|███▋      | 44/120 [00:04<00:07, 10.83it/s][A
+ 38%|███▊      | 46/120 [00:04<00:06, 11.42it/s][A
+ 40%|████      | 48/120 [00:04<00:06, 11.17it/s][A
+ 42%|████▏     | 50/120 [00:04<00:06, 11.33it/s][A
+ 43%|████▎     | 52/120 [00:05<00:06, 11.12it/s][A
+ 45%|████▌     | 54/120 [00:05<00:05, 11.73it/s][A
+ 47%|████▋     | 56/120 [00:05<00:06, 10.11it/s][A
+ 48%|████▊     | 58/120 [00:05<00:06, 10.09it/s][A
+ 50%|█████     | 60/120 [00:05<00:05, 10.70it/s][A
+ 52%|█████▏    | 62/120 [00:05<00:05, 10.30it/s][A
+ 53%|█████▎    | 64/120 [00:06<00:05, 10.00it/s][A
+ 55%|█████▌    | 66/120 [00:06<00:05,  9.65it/s][A
+ 56%|█████▌    | 67/120 [00:06<00:05,  9.71it/s][A
+ 57%|█████▊    | 69/120 [00:06<00:05, 10.11it/s][A
+ 59%|█████▉    | 71/120 [00:06<00:05,  9.78it/s][A
+ 61%|██████    | 73/120 [00:07<00:04,  9.83it/s][A
+ 62%|██████▏   | 74/120 [00:07<00:04,  9.57it/s][A
+ 63%|██████▎   | 76/120 [00:07<00:04, 10.40it/s][A
+ 65%|██████▌   | 78/120 [00:07<00:04,  9.97it/s][A
+ 67%|██████▋   | 80/120 [00:07<00:04,  9.50it/s][A
+ 68%|██████▊   | 81/120 [00:07<00:04,  9.37it/s][A
+ 69%|██████▉   | 83/120 [00:08<00:03,  9.45it/s][A
+ 70%|███████   | 84/120 [00:08<00:03,  9.53it/s][A
+ 71%|███████   | 85/120 [00:08<00:03,  9.38it/s][A
+ 72%|███████▎  | 87/120 [00:08<00:03, 10.14it/s][A
+ 74%|███████▍  | 89/120 [00:08<00:02, 10.64it/s][A
+ 76%|███████▌  | 91/120 [00:08<00:02, 10.18it/s][A
+ 78%|███████▊  | 93/120 [00:09<00:02, 10.71it/s][A
+ 79%|███████▉  | 95/120 [00:09<00:02, 10.10it/s][A
+ 81%|████████  | 97/120 [00:09<00:02, 10.61it/s][A
+ 82%|████████▎ | 99/120 [00:09<00:01, 10.66it/s][A
+ 84%|████████▍ | 101/120 [00:09<00:01, 10.13it/s][A
+ 86%|████████▌ | 103/120 [00:10<00:01, 10.45it/s][A
+ 88%|████████▊ | 105/120 [00:10<00:01, 10.76it/s][A
+ 89%|████████▉ | 107/120 [00:10<00:01, 10.63it/s][A
+ 91%|█████████ | 109/120 [00:10<00:01, 10.61it/s][A
+ 92%|█████████▎| 111/120 [00:10<00:00, 10.28it/s][A
+ 94%|█████████▍| 113/120 [00:11<00:00, 10.53it/s][A
+ 96%|█████████▌| 115/120 [00:11<00:00, 10.04it/s][A
+ 98%|█████████▊| 117/120 [00:11<00:00, 10.05it/s][A
+ 99%|█████████▉| 119/120 [00:11<00:00, 10.16it/s][A                                              
+                                                 [A 55%|█████▍    | 6/11 [00:28<00:11,  2.39s/it]
+100%|██████████| 120/120 [00:11<00:00, 10.16it/s][A
+                                                 [A 64%|██████▎   | 7/11 [00:30<00:24,  6.24s/it] 73%|███████▎  | 8/11 [00:33<00:14,  4.91s/it] 82%|████████▏ | 9/11 [00:35<00:08,  4.05s/it] 91%|█████████ | 10/11 [00:37<00:03,  3.45s/it]                                                91%|█████████ | 10/11 [00:37<00:03,  3.45s/it]100%|██████████| 11/11 [00:39<00:00,  3.05s/it]{'eval_loss': '1.172', 'eval_runtime': '11.93', 'eval_samples_per_second': '20.11', 'eval_steps_per_second': '10.05', 'epoch': '0.04444', 'num_input_tokens_seen': 19754}
+{'loss': '1.063', 'grad_norm': '22.55', 'learning_rate': '4e-06', 'epoch': '0.07407', 'num_input_tokens_seen': 33786, 'train_runtime': '37.33', 'train_tokens_per_second': '905.2'}
+
+  0%|          | 0/120 [00:00<?, ?it/s][A
+  2%|▎         | 3/120 [00:00<00:07, 15.22it/s][A
+  4%|▍         | 5/120 [00:00<00:09, 12.26it/s][A
+  6%|▌         | 7/120 [00:00<00:09, 11.96it/s][A
+  8%|▊         | 9/120 [00:00<00:09, 11.88it/s][A
+  9%|▉         | 11/120 [00:00<00:10, 10.73it/s][A
+ 11%|█         | 13/120 [00:01<00:09, 10.99it/s][A
+ 12%|█▎        | 15/120 [00:01<00:09, 10.70it/s][A
+ 14%|█▍        | 17/120 [00:01<00:09, 10.35it/s][A
+ 16%|█▌        | 19/120 [00:01<00:09, 10.71it/s][A
+ 18%|█▊        | 21/120 [00:01<00:09, 10.68it/s][A
+ 19%|█▉        | 23/120 [00:02<00:08, 11.16it/s][A
+ 21%|██        | 25/120 [00:02<00:08, 11.47it/s][A
+ 22%|██▎       | 27/120 [00:02<00:08, 10.57it/s][A
+ 24%|██▍       | 29/120 [00:02<00:08, 10.59it/s][A
+ 26%|██▌       | 31/120 [00:02<00:08, 10.59it/s][A
+ 28%|██▊       | 33/120 [00:03<00:08, 10.45it/s][A
+ 29%|██▉       | 35/120 [00:03<00:07, 11.09it/s][A
+ 31%|███       | 37/120 [00:03<00:07, 10.83it/s][A
+ 32%|███▎      | 39/120 [00:03<00:07, 11.01it/s][A
+ 34%|███▍      | 41/120 [00:03<00:07, 10.63it/s][A
+ 36%|███▌      | 43/120 [00:03<00:07, 10.88it/s][A
+ 38%|███▊      | 45/120 [00:04<00:06, 11.94it/s][A
+ 39%|███▉      | 47/120 [00:04<00:06, 11.87it/s][A
+ 41%|████      | 49/120 [00:04<00:05, 12.76it/s][A
+ 42%|████▎     | 51/120 [00:04<00:05, 11.69it/s][A
+ 44%|████▍     | 53/120 [00:04<00:05, 12.09it/s][A
+ 46%|████▌     | 55/120 [00:04<00:05, 11.76it/s][A
+ 48%|████▊     | 57/120 [00:05<00:05, 11.02it/s][A
+ 49%|████▉     | 59/120 [00:05<00:05, 10.62it/s][A
+ 51%|█████     | 61/120 [00:05<00:05, 11.28it/s][A
+ 52%|█████▎    | 63/120 [00:05<00:05, 10.79it/s][A
+ 54%|█████▍    | 65/120 [00:05<00:05, 10.47it/s][A
+ 56%|█████▌    | 67/120 [00:06<00:05, 10.07it/s][A
+ 57%|█████▊    | 69/120 [00:06<00:04, 10.45it/s][A
+ 59%|█████▉    | 71/120 [00:06<00:04, 10.56it/s][A
+ 61%|██████    | 73/120 [00:06<00:04, 10.48it/s][A
+ 62%|██████▎   | 75/120 [00:06<00:04, 10.35it/s][A
+ 64%|██████▍   | 77/120 [00:06<00:03, 10.79it/s][A
+ 66%|██████▌   | 79/120 [00:07<00:03, 10.45it/s][A
+ 68%|██████▊   | 81/120 [00:07<00:03, 10.00it/s][A
+ 69%|██████▉   | 83/120 [00:07<00:03, 10.27it/s][A
+ 71%|███████   | 85/120 [00:07<00:03, 10.02it/s][A
+ 72%|███████▎  | 87/120 [00:07<00:03, 10.34it/s][A
+ 74%|███████▍  | 89/120 [00:08<00:02, 10.80it/s][A
+ 76%|███████▌  | 91/120 [00:08<00:02, 10.41it/s][A
+ 78%|███████▊  | 93/120 [00:08<00:02, 10.75it/s][A
+ 79%|███████▉  | 95/120 [00:08<00:02, 10.33it/s][A
+ 81%|████████  | 97/120 [00:08<00:02, 10.72it/s][A
+ 82%|████████▎ | 99/120 [00:09<00:01, 11.01it/s][A
+ 84%|████████▍ | 101/120 [00:09<00:01, 10.22it/s][A
+ 86%|████████▌ | 103/120 [00:09<00:01, 10.59it/s][A
+ 88%|████████▊ | 105/120 [00:09<00:01, 10.61it/s][A
+ 89%|████████▉ | 107/120 [00:09<00:01, 10.62it/s][A
+ 91%|█████████ | 109/120 [00:10<00:01, 10.45it/s][A
+ 92%|█████████▎| 111/120 [00:10<00:00, 10.04it/s][A
+ 94%|█████████▍| 113/120 [00:10<00:00, 10.38it/s][A
+ 96%|█████████▌| 115/120 [00:10<00:00, 10.17it/s][A
+ 98%|█████████▊| 117/120 [00:10<00:00, 10.07it/s][A
+ 99%|█████████▉| 119/120 [00:11<00:00, 10.28it/s][A                                               
+                                                 [A100%|██████████| 11/11 [00:50<00:00,  3.05s/it]
+100%|██████████| 120/120 [00:11<00:00, 10.28it/s][A
+                                                 [A                                               100%|██████████| 11/11 [00:50<00:00,  3.05s/it]100%|██████████| 11/11 [00:50<00:00,  4.62s/it]
+{'eval_loss': '0.9199', 'eval_runtime': '11.22', 'eval_samples_per_second': '21.39', 'eval_steps_per_second': '10.69', 'epoch': '0.08148', 'num_input_tokens_seen': 37402}
+{'train_runtime': '50.84', 'train_samples_per_second': '3.399', 'train_steps_per_second': '0.216', 'train_loss': '1.588', 'epoch': '0.08148', 'num_input_tokens_seen': 37402}
+[2026-09-25 12:16:30,935][src.modes][INFO] - Saved to './finetuned_timing'.
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.79it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.79it/s]
+[2026-09-25 12:16:31,684][src.modes][INFO] - Merged model saved to 'finetuned_timing/merged'.
+[info] Training metrics saved for analysis at data/evaluations/finetune_gemma3_270m_it_20260925_161631_metrics.json
+[info] AS02 run bundle saved: finetune_gemma3_270m_it_20260925_161631_timing_log_history.json / _config.yaml / _run_info.json / loss curve data/evaluations/finetune_gemma3_270m_it_20260925_161631_timing_loss_curve.png
+[2026-09-25 12:16:31,984][__main__][INFO] - Using a local model only. (model source: local, model_id: google/gemma-3-270m-it)

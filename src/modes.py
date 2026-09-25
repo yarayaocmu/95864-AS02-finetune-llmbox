@@ -479,7 +479,8 @@ class Modes:
                     lora_alpha=getattr(cfg.training, 'lora_alpha', 16),
                     lora_dropout=getattr(cfg.training, 'lora_dropout', 0.05),
                     bias="none", task_type="CAUSAL_LM",
-                    target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+                    target_modules=list(getattr(cfg.training, "lora_target_modules", None) or
+                                        ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]),  # AS02 edit: configurable
                 )
                 model = get_peft_model(model, lora_config)
                 model.print_trainable_parameters()
@@ -608,11 +609,24 @@ class Modes:
             fp16=(dtype.__str__() == "torch.float16" and device != "mps"),
             report_to=[],
             remove_unused_columns=False,
+            include_num_input_tokens_seen=True,   # AS02 edit: exact token count for MetricsTracker
+            prediction_loss_only=True,            # AS02 edit: do not accumulate eval logits (262k vocab x seq x batch
+                                                  #   blew MPS memory); eval_loss is all we report
         )
         trainer = Trainer(
             model=model, args=training_args, train_dataset=train_dataset, eval_dataset=eval_dataset,
             data_collator=collator, optimizers=(optimizer, None),
         )
+        if device == "mps":                                   # AS02 edit: MPS allocator kept growing
+            import torch                                      #   (OOM after ~25 steps with the 262k vocab);
+            from transformers import TrainerCallback          #   release cached blocks after every step.
+
+            class _MpsEmptyCache(TrainerCallback):
+                def on_step_end(self, args, state, control, **kwargs):
+                    torch.mps.empty_cache()
+                def on_evaluate(self, args, state, control, **kwargs):
+                    torch.mps.empty_cache()
+            trainer.add_callback(_MpsEmptyCache())
         self.log.info("Starting %s (method=%s, optimizer=%s)...", cfg.mode.name, cfg.training.method, cfg.optimizer.name)
 
         metrics_tracker = training_metrics.MetricsTracker(cfg)  # sk edited: sept. 20 2026 around 10:10 AM EST
@@ -638,6 +652,23 @@ class Modes:
             # Save the grouped metrics dictionary to metrics.json                 # sk edited: sept. 20 2026 around 10:10 AM EST
             metrics_file.write_text(json.dumps(metrics_obj.to_grouped_dict(), indent=2, ensure_ascii=False), encoding="utf-8") # sk edited: sept. 20 2026 around 10:10 AM EST
             print(f"[info] Training metrics saved for analysis at {metrics_file}")  # sk edited: sept. 20 2026 around 10:10 AM EST
+            # ---- AS02 edit (Y. Yao, Sept 2026): reproducibility bundle per run ----
+            stem = metrics_file.with_suffix('').name.replace('_metrics', '')
+            run_name = getattr(cfg.training, 'run_name', None)
+            if run_name:
+                stem = f"{stem}_{run_name}"
+            (model_metrics_dir / f"{stem}_log_history.json").write_text(
+                json.dumps(trainer.state.log_history, indent=2), encoding="utf-8")
+            (model_metrics_dir / f"{stem}_config.yaml").write_text(OmegaConf.to_yaml(cfg), encoding="utf-8")
+            curve = training_metrics.plot_loss_curve(trainer, str(model_metrics_dir / f"{stem}_loss_curve.png"))
+            trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
+            total = sum(p.numel() for p in model.parameters())
+            extra = {"run_name": run_name, "trainable_params": trainable, "total_params": total,
+                     "trainable_pct": round(100 * trainable / total, 4), "global_steps": trainer.state.global_step,
+                     "train_examples": len(train_dataset), "eval_examples": len(eval_dataset) if eval_dataset else 0,
+                     "device": device, "dtype": str(dtype), "metrics_file": str(metrics_file)}
+            (model_metrics_dir / f"{stem}_run_info.json").write_text(json.dumps(extra, indent=2), encoding="utf-8")
+            print(f"[info] AS02 run bundle saved: {stem}_log_history.json / _config.yaml / _run_info.json" + (f" / loss curve {curve}" if curve else ""))
          # The training_report.md is handled (unchanged) in the current output_dir by other pipelines if needed.
          # No change to MD report in output_dir.
 
