@@ -1,0 +1,24 @@
+{
+  "description": "Stage-1 output: the judge classifies the patient report WITHOUT seeing\nthe AI response, so it cannot simply agree with the answer under test.",
+  "properties": {
+    "judge_label": {
+      "enum": [
+        "POSITIVE",
+        "NEUTRAL",
+        "NEGATIVE"
+      ],
+      "title": "Judge Label",
+      "type": "string"
+    },
+    "reason": {
+      "default": "",
+      "title": "Reason",
+      "type": "string"
+    }
+  },
+  "required": [
+    "judge_label"
+  ],
+  "title": "BlindVerdict",
+  "type": "object"
+}

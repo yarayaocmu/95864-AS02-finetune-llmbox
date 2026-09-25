@@ -1,0 +1,63 @@
+{
+  "description": "Structured verdict the judge LLM must produce for one response.",
+  "properties": {
+    "judge_label": {
+      "description": "The experience class the judge reads from the patient report.",
+      "enum": [
+        "POSITIVE",
+        "NEUTRAL",
+        "NEGATIVE"
+      ],
+      "title": "Judge Label",
+      "type": "string"
+    },
+    "response_label": {
+      "anyOf": [
+        {
+          "enum": [
+            "POSITIVE",
+            "NEUTRAL",
+            "NEGATIVE"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "The label found in the model response, or null if none.",
+      "title": "Response Label"
+    },
+    "format_ok": {
+      "description": "True if the response is exactly one label word.",
+      "title": "Format Ok",
+      "type": "boolean"
+    },
+    "likert": {
+      "description": "1=completely violates ... 5=fully complies with the criterion.",
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "title": "Likert",
+      "type": "integer"
+    },
+    "reason": {
+      "default": "",
+      "description": "One sentence explaining the rating.",
+      "title": "Reason",
+      "type": "string"
+    }
+  },
+  "required": [
+    "judge_label",
+    "format_ok",
+    "likert"
+  ],
+  "title": "ExperienceJudgement",
+  "type": "object"
+}

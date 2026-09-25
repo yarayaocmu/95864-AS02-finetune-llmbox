@@ -1,0 +1,7 @@
+{
+  "judge_label": "NEGATIVE",
+  "response_label": "NEUTRAL",
+  "format_ok": true,
+  "likert": 3,
+  "reason": "Report describes persistent side effects; response NEUTRAL is an adjacent-class error."
+}

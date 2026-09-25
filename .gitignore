@@ -7,3 +7,6 @@ __pycache__/
 *.pyc
 outputs/20*/
 .DS_Store
+!finetuned_exp*/adapter_config.json
+!finetuned_exp*/adapter_model.safetensors
+!finetuned_exp*/README.md
